@@ -71,11 +71,11 @@ defmodule FileSystem.Backends.FSPoll do
       case File.stat!(dir) do
         %{type: :regular, mtime: mtime} ->
           Map.put(map, dir, mtime)
-        %{type: :directory} ->
-          dir
-          |> Path.join("*")
-          |> Path.wildcard
-          |> files_mtimes(map)
+        # %{type: :directory} ->
+        #   dir
+        #   |> Path.join("*")
+        #   |> Path.wildcard
+        #   |> files_mtimes(map)
         %{type: _other} ->
           map
       end
